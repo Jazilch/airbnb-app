@@ -10,6 +10,8 @@
   "author": "Jazilch",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "mysql": "^2.17.1"
   }
 }
