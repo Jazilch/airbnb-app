@@ -10,8 +10,8 @@ services:
       - /client/node_modules
     links:
       - api
-    networks:
-      - webappnetwork
+    # networks:
+    #   - webappnetwork
 
   api:
     build: './api'
@@ -25,8 +25,8 @@ services:
       - /api/node_modules
     depends_on:
       - mysqldb
-    networks:
-      - webappnetwork
+    # networks:
+    #   - webappnetwork
 
   adminer:
     image: adminer
@@ -45,9 +45,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
-    networks:
-     - webappnetwork
+    # networks:
+    #  - webappnetwork
 
-networks:
-    webappnetwork:
-        driver: bridge
+# networks:
+#     webappnetwork:
+#         driver: bridge
