@@ -2,10 +2,11 @@
 
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Layout, Icon, Row } from 'antd';
+import { Layout, Icon } from 'antd';
 import axios from 'axios';
 import ListingsCard from '../components/ListingCard';
 import SideMenu from '../components/SideMenu';
+import { FlexWrapper } from '../styles';
 
 const { Header, Content } = Layout;
 
@@ -51,20 +52,13 @@ class ListingsContainer extends Component {
               minHeight: 280
             }}
           >
-            <Row
-              style={{
-                display: 'flex',
-                flexFlow: 'row wrap',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
+            <FlexWrapper flexFlow="row wrap" justify="center" align="center">
               <ListingsCard
                 listings={listings}
                 isLoading={isLoading}
                 handleListingClick={this.handleListingClick}
               />
-            </Row>
+            </FlexWrapper>
           </Content>
         </Layout>
       </Layout>
