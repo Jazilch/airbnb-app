@@ -1,30 +1,17 @@
 'use es6';
 
 import React from 'react';
-import { Rate } from 'antd';
 import convertRating from '../utils/convertRating';
+import { FlexWrapper, StyledRate } from '../styles';
 
 const ReviewRating = ({ name, value }) => {
   return (
     <>
       {value && (
-        <div
-          style={{
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: '0 15px'
-          }}
-        >
+        <FlexWrapper align="center" style={{ margin: '0 15px' }}>
           <span style={{ marginRight: '15px' }}>{name}</span>
-          <Rate
-            style={{ marginLeft: 'auto' }}
-            allowHalf
-            disabled
-            defaultValue={convertRating(value)}
-          />
-        </div>
+          <StyledRate allowHalf disabled defaultValue={convertRating(value)} />
+        </FlexWrapper>
       )}
     </>
   );

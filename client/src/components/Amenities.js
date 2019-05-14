@@ -1,7 +1,7 @@
 'use es6';
 
 import React from 'react';
-import { StyledH3 } from '../styles';
+import { StyledH3, StyledUl } from '../styles';
 import cleanString from '../utils/cleanString';
 
 const Amenities = ({ amenities }) => {
@@ -12,11 +12,11 @@ const Amenities = ({ amenities }) => {
   return (
     <div>
       <StyledH3>Amenities</StyledH3>
-      <ul style={{ columnCount: '2' }}>
+      <StyledUl>
         {cleanedAmenities.map(amenity => (
           <li>{amenity}</li>
         ))}
-      </ul>
+      </StyledUl>
     </div>
   );
 };

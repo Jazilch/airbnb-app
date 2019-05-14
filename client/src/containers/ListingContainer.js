@@ -8,6 +8,8 @@ import ListingHeading from '../components/ListingHeading';
 import Amenities from '../components/Amenities';
 import Reviews from '../components/Reviews';
 import BookingSidebar from '../components/BookingSidebar';
+import ListingDescription from '../components/ListingDescription';
+import { StyledBannerImage } from '../styles';
 
 const { Header, Content } = Layout;
 
@@ -56,33 +58,22 @@ class ListingContainer extends Component {
                 listing.map(listingItem => (
                   <>
                     <Col span={24}>
-                      <img
-                        src={listingItem.picture_url}
-                        style={{
-                          height: '350px',
-                          objectFit: 'cover',
-                          marginBottom: '25px'
-                        }}
-                        width="100%"
-                        alt=""
-                      />
+                      <StyledBannerImage src={listingItem.picture_url} alt="" />
                     </Col>
                     <Col span={16}>
                       <Row>
-                        <div>
-                          <ListingHeading listing={listingItem} />
-                          <p>{listingItem.country}</p>
-                          <p>{listingItem.room_type}</p>
-                          <p>{listingItem.description}</p>
-                          <Amenities amenities={listingItem.amenities} />
-                          <Reviews listing={listingItem} />
-                        </div>
+                        <ListingHeading listing={listingItem} />
+                        <ListingDescription
+                          country={listingItem.country}
+                          roomType={listingItem.room_type}
+                          description={listingItem.description}
+                        />
+                        <Amenities amenities={listingItem.amenities} />
+                        <Reviews listing={listingItem} />
                       </Row>
                     </Col>
                     <Col span={8}>
-                      <div>
-                        <BookingSidebar listing={listingItem} />
-                      </div>
+                      <BookingSidebar listing={listingItem} />
                     </Col>
                   </>
                 ))}
