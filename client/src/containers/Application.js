@@ -1,7 +1,7 @@
 'use es6';
 
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import ListingsContainer from './ListingsContainer';
 import ListingContainer from './ListingContainer';
 
@@ -11,6 +11,7 @@ const Application = () => {
       <Switch>
         <Route exact path="/listings" component={ListingsContainer} />
         <Route path="/listings/:id" component={ListingContainer} />
+        <Redirect to="/listings" />
       </Switch>
     </BrowserRouter>
   );

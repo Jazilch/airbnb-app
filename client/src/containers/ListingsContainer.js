@@ -2,10 +2,12 @@
 
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
 import { Layout, Icon } from 'antd';
 import axios from 'axios';
 import ListingsCard from '../components/ListingCard';
 import SideMenu from '../components/SideMenu';
+import ListingsPagination from '../components/ListingsPagination';
 import { FlexWrapper } from '../styles';
 
 const { Header, Content } = Layout;
@@ -35,8 +37,17 @@ class ListingsContainer extends Component {
     history.push(`/listings/${id}`);
   };
 
+  handlePagination = page => {
+    const { history } = this.props;
+    history.push({
+      search: `?page=${page}`
+    });
+  };
+
   render() {
     const { listings, isLoading } = this.state;
+    const { location } = this.props;
+    const search = queryString.parse(location.search);
     return (
       <Layout>
         <SideMenu />
@@ -56,7 +67,15 @@ class ListingsContainer extends Component {
               <ListingsCard
                 listings={listings}
                 isLoading={isLoading}
+                page={search.page || 1}
                 handleListingClick={this.handleListingClick}
+              />
+            </FlexWrapper>
+            <FlexWrapper flexFlow="row wrap" justify="center">
+              <ListingsPagination
+                listingsCount={listings.length}
+                page={search.page}
+                handlePagination={this.handlePagination}
               />
             </FlexWrapper>
           </Content>
